@@ -16,6 +16,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HttpControllerTest {
 
+	private static final String TAG = "HttpControllerTest : ";
+	
+	@GetMapping("/http/lombok")
+	public String lombokTest() {
+		Member m1 = new Member(1, "ssar", "1234", "email");
+		Member m2 = new Member();
+		System.out.println(TAG + " getter : " + m1.getId());
+		m1.setId(5000);
+		System.out.println(TAG + " setter : " + m1.getId());
+		
+		Member m = Member.builder().username("ssar").password("1234").email("email").build();
+		System.out.println(m);
+		
+		return "lombok test 완료";
+	}
+	
 	// 인터넷 브라우저 요청은 get 요청만 가능함
 	
 	// http://localhost:8090/http/get (select)
@@ -23,6 +39,7 @@ public class HttpControllerTest {
 //	public String getTest(@RequestParam int id, @RequestParam String username) {
 	public String getTest(Member m) {
 		// id=1&username=ssar&password=1234&email=ssar@nate.com // 스프링이 Member 객체의 넣어줌
+		
 		return "get 요청 " + m.getId() + ", " + m.getUsername() + ", " + m.getPassword() + ", " + m.getEmail();
 	}
 	
