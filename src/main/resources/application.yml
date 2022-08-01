@@ -14,10 +14,10 @@ spring:
       suffix: .jsp
       
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/blog?serverTimezone=Asia/Seoul
-    username: cos
-    password: cos1234
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@146.56.135.54:1521/orcl
+    username: study
+    password: 1234
     
   jpa:
     open-in-view: true
